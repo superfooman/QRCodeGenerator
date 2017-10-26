@@ -36,6 +36,8 @@ namespace QRCodeGenerator
         private void QRCodeGenForm_Load(object sender, EventArgs e)
         {
             initialize = false;
+            metroTabControl.SelectedIndex = 0;
+            importPyMetroTile.Select();
             pythonPathMetroTextBox.Text = Path.Combine(AssemblyDirectory, "qr_code.py");
         }
 
@@ -74,13 +76,16 @@ namespace QRCodeGenerator
                 if (!initialize)
                     throw new Exception("Please import the python script (.py) before generate the QR code");
 
-                   await Task.Run(async () =>
+                await Task.Run(async () =>
                 {
                     var generate_qr_code = await getVariable(ironPython.Scope, "generate_qr_code");
                     var save_qr_code_image = await getVariable(ironPython.Scope, "save_qr_code_image");
                     var message = generate_qr_code(textBox.Text);
                     save_qr_code_image(message, titleMetroTextBox.Text);
                 });
+
+                MessageBox.Show(string.Format("Successfully created the QR code image (i.e. {0}) at {1}",
+                    titleMetroTextBox.Text, AssemblyDirectory), "Information");
             }
             catch (Exception ex)
             {
