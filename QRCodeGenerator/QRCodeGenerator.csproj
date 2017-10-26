@@ -93,16 +93,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IronPythonWrapper.cs" />
-    <Compile Include="QRCodeGen.cs">
+    <Compile Include="QRCode\IronPythonWrapper.cs" />
+    <Compile Include="QRCode\QRCodeGen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QRCodeGen.Designer.cs">
+    <Compile Include="QRCode\QRCodeGen.Designer.cs">
       <DependentUpon>QRCodeGen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="QRCode\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="QRCodeGen.resx">
+    <EmbeddedResource Include="QRCode\QRCodeGen.resx">
       <DependentUpon>QRCodeGen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,7 +114,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="QRCode\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,7 +126,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="QRCode\App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.StdLib.txt" />
