@@ -6,7 +6,7 @@ import urllib
 root_url = 'https://chart.googleapis.com/chart?'
 
 def generate_qr_code(message):
-    query = dict(cht='qr', chs='300x300', chl=message)
+    query = dict(cht='qr', chs='320x320', chl=message)
     url = root_url + urllib.urlencode(query)
     url_open = urllib.urlopen(url)
     image = url_open.read()

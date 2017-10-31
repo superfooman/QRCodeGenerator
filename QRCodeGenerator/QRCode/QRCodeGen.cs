@@ -9,7 +9,7 @@ using IronPython.Hosting;
 using IronPython.Runtime;
 using Microsoft.Scripting.Hosting;
 using System.Threading;
-
+using System.Drawing;
 
 namespace QRCodeGenerator
 {
@@ -27,6 +27,7 @@ namespace QRCodeGenerator
             }
         }
         private bool initialize;
+        private bool resize;
 
         public QRCodeGenForm()
         {
@@ -36,6 +37,7 @@ namespace QRCodeGenerator
         private void QRCodeGenForm_Load(object sender, EventArgs e)
         {
             initialize = false;
+            resize = false;
             metroTabControl.SelectedIndex = 0;
             importPyMetroTile.Select();
             pythonPathMetroTextBox.Text = Path.Combine(AssemblyDirectory, "qr_code.py");
@@ -84,7 +86,7 @@ namespace QRCodeGenerator
                     save_qr_code_image(message, titleMetroTextBox.Text);
                 });
 
-                MessageBox.Show(string.Format("Successfully created the QR code image (i.e. {0}) at {1}",
+                MessageBox.Show(string.Format("Successfully generated the QR code image (i.e. {0}) at {1}",
                     titleMetroTextBox.Text, AssemblyDirectory), "Information");
             }
             catch (Exception ex)
@@ -99,13 +101,50 @@ namespace QRCodeGenerator
             {
                 metroTabControl.SelectedIndex = 1;
                 string image = Path.Combine(AssemblyDirectory, titleMetroTextBox.Text);
+                if (!File.Exists(image))
+                {
+                    throw new Exception(string.Format("Invalid image path {0}", image));
+                }
 
-                pictureBox.ImageLocation = image;
-                pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+                Bitmap img = new Bitmap(image);
+                pictureBox.Image = img;
+                pictureBox.Size = pictureBox.Image.Size;
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERROR");
+                exceptionMessageBox(ex.Message);
+            }
+        }
+
+        private void resizeMetroTile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                metroTabControl.SelectedIndex = 1;
+                if (pictureBox.Image == null)
+                {
+                    throw new Exception("Please display a valid image file (i.e. *.png) first");
+                }
+
+                Size size = pictureBox.Size;
+                int zoom = 2;
+                if (!resize)
+                {
+                    size.Width /= zoom;
+                    size.Height /= zoom;
+                }
+                else
+                {
+                    size.Width *= zoom;
+                    size.Height *= zoom;
+                }
+                pictureBox.Size = size;
+                resize = !resize;
+            }
+            catch (Exception ex)
+            {
+                exceptionMessageBox(ex.Message);
             }
         }
 
@@ -116,6 +155,14 @@ namespace QRCodeGenerator
                 dynamic result = scope.GetVariable(input);
                 return result;
             });
+        }
+
+        private void exceptionMessageBox(string message)
+        {
+            metroTabControl.SelectedIndex = 0;
+            titleMetroTextBox.Select();
+            pictureBox.Image = null;
+            MessageBox.Show(message, "ERROR");
         }
     }
 }

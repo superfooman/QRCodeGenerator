@@ -40,6 +40,7 @@
             this.importPyMetroTile = new MetroFramework.Controls.MetroTile();
             this.displayQRMetroTile = new MetroFramework.Controls.MetroTile();
             this.pythonPathMetroTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.resizeMetroTile = new MetroFramework.Controls.MetroTile();
             this.overallTableLayoutPanel.SuspendLayout();
             this.metroTabControl.SuspendLayout();
             this.inputMetroTabPage.SuspendLayout();
@@ -73,10 +74,10 @@
             this.metroTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl.Location = new System.Drawing.Point(3, 96);
             this.metroTabControl.Name = "metroTabControl";
-            this.metroTabControl.SelectedIndex = 1;
+            this.metroTabControl.SelectedIndex = 0;
             this.metroTabControl.Size = new System.Drawing.Size(514, 381);
             this.metroTabControl.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroTabControl.TabIndex = 4;
+            this.metroTabControl.TabIndex = 5;
             // 
             // inputMetroTabPage
             // 
@@ -130,13 +131,15 @@
             // 
             // tileTableLayoutPanel
             // 
-            this.tileTableLayoutPanel.ColumnCount = 3;
-            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tileTableLayoutPanel.ColumnCount = 4;
+            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tileTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tileTableLayoutPanel.Controls.Add(this.generateMetroTile, 0, 0);
             this.tileTableLayoutPanel.Controls.Add(this.importPyMetroTile, 0, 0);
             this.tileTableLayoutPanel.Controls.Add(this.displayQRMetroTile, 1, 0);
+            this.tileTableLayoutPanel.Controls.Add(this.resizeMetroTile, 3, 0);
             this.tileTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tileTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.tileTableLayoutPanel.Name = "tileTableLayoutPanel";
@@ -148,13 +151,13 @@
             // generateMetroTile
             // 
             this.generateMetroTile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.generateMetroTile.Location = new System.Drawing.Point(172, 1);
+            this.generateMetroTile.Location = new System.Drawing.Point(129, 1);
             this.generateMetroTile.Margin = new System.Windows.Forms.Padding(1);
             this.generateMetroTile.Name = "generateMetroTile";
-            this.generateMetroTile.Size = new System.Drawing.Size(169, 57);
+            this.generateMetroTile.Size = new System.Drawing.Size(126, 57);
             this.generateMetroTile.Style = MetroFramework.MetroColorStyle.Teal;
             this.generateMetroTile.TabIndex = 1;
-            this.generateMetroTile.Text = "[ GENERATE ]\r\nQR Code";
+            this.generateMetroTile.Text = "[ GENERATE ]";
             this.generateMetroTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.generateMetroTile.Theme = MetroFramework.MetroThemeStyle.Light;
             this.generateMetroTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
@@ -166,7 +169,7 @@
             this.importPyMetroTile.Location = new System.Drawing.Point(1, 1);
             this.importPyMetroTile.Margin = new System.Windows.Forms.Padding(1);
             this.importPyMetroTile.Name = "importPyMetroTile";
-            this.importPyMetroTile.Size = new System.Drawing.Size(169, 57);
+            this.importPyMetroTile.Size = new System.Drawing.Size(126, 57);
             this.importPyMetroTile.Style = MetroFramework.MetroColorStyle.Lime;
             this.importPyMetroTile.TabIndex = 0;
             this.importPyMetroTile.Text = "[ IMPORT ]\r\nPython Script";
@@ -178,13 +181,13 @@
             // displayQRMetroTile
             // 
             this.displayQRMetroTile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.displayQRMetroTile.Location = new System.Drawing.Point(343, 1);
+            this.displayQRMetroTile.Location = new System.Drawing.Point(257, 1);
             this.displayQRMetroTile.Margin = new System.Windows.Forms.Padding(1);
             this.displayQRMetroTile.Name = "displayQRMetroTile";
-            this.displayQRMetroTile.Size = new System.Drawing.Size(170, 57);
+            this.displayQRMetroTile.Size = new System.Drawing.Size(126, 57);
             this.displayQRMetroTile.Style = MetroFramework.MetroColorStyle.Teal;
             this.displayQRMetroTile.TabIndex = 2;
-            this.displayQRMetroTile.Text = "[ DISPLAY ]\r\nQR Code";
+            this.displayQRMetroTile.Text = "[ DISPLAY ]";
             this.displayQRMetroTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.displayQRMetroTile.Theme = MetroFramework.MetroThemeStyle.Light;
             this.displayQRMetroTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
@@ -196,8 +199,24 @@
             this.pythonPathMetroTextBox.Location = new System.Drawing.Point(3, 68);
             this.pythonPathMetroTextBox.Name = "pythonPathMetroTextBox";
             this.pythonPathMetroTextBox.Size = new System.Drawing.Size(514, 22);
-            this.pythonPathMetroTextBox.TabIndex = 3;
+            this.pythonPathMetroTextBox.TabIndex = 4;
             this.pythonPathMetroTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // resizeMetroTile
+            // 
+            this.resizeMetroTile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resizeMetroTile.Location = new System.Drawing.Point(385, 1);
+            this.resizeMetroTile.Margin = new System.Windows.Forms.Padding(1);
+            this.resizeMetroTile.Name = "resizeMetroTile";
+            this.resizeMetroTile.Size = new System.Drawing.Size(128, 57);
+            this.resizeMetroTile.Style = MetroFramework.MetroColorStyle.Teal;
+            this.resizeMetroTile.TabIndex = 3;
+            this.resizeMetroTile.Text = "[ RESIZE ]";
+            this.resizeMetroTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resizeMetroTile.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.resizeMetroTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resizeMetroTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.resizeMetroTile.Click += new System.EventHandler(this.resizeMetroTile_Click);
             // 
             // QRCodeGenForm
             // 
@@ -239,6 +258,7 @@
         private MetroFramework.Controls.MetroTextBox pythonPathMetroTextBox;
         private MetroFramework.Controls.MetroTile generateMetroTile;
         private MetroFramework.Controls.MetroTextBox titleMetroTextBox;
+        private MetroFramework.Controls.MetroTile resizeMetroTile;
     }
 }
 
