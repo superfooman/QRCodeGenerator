@@ -8,6 +8,5 @@ This windows application is able to generate QR code by using rest API, ironpyth
 
 P.S. Make sure the user has (A) IronPython and (B) MetroFramework installed
 
-Recommend way to install both packages is through NuGet Package Manager which can be found at
-
+Recommend way to install both packages is through NuGet Package Manager which can be found:
 Tools > NuGet Package Manager > Manage NuGet Package Solutions > Search for (A) IronPython and (B) MetroFramework & installed accordingly
